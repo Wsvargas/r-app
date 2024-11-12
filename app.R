@@ -1,11 +1,14 @@
 # app.R
-library(plumber)
+library(shiny)
 
-#* @get /
-function() {
-  "<h1>Hello from R!</h1>"
-}
+# Definir la interfaz de usuario
+ui <- fluidPage(
+  titlePanel("R Shiny App"),
+  h1("Hello from R with Shiny!")
+)
 
-# Iniciar el servidor Plumber en el archivo app.R
-pr <- plumb("app.R")
-pr$run(host = "0.0.0.0", port = 8080)
+# Definir el servidor de la aplicación
+server <- function(input, output) {}
+
+# Crear la aplicación Shiny
+shinyApp(ui = ui, server = server)
