@@ -1,11 +1,17 @@
-# Dockerfile
-FROM rocker/shiny:latest
+# Usa una imagen base de R
+FROM rocker/r-ver:latest
 
-# Copia la aplicación R al contenedor
-COPY app.R /srv/shiny-server/
+# Establece el directorio de trabajo dentro del contenedor
+WORKDIR /app
 
-# Exponer el puerto 3838 para Shiny Server
-EXPOSE 3838
+# Instala las dependencias necesarias
+RUN R -e "install.packages('httpuv')"
 
-# Ejecutar Shiny Server
-CMD ["/usr/bin/shiny-server"]
+# Copia el archivo de la aplicación R
+COPY app.R /app/
+
+# Expone el puerto que utilizará la aplicación
+EXPOSE 8787
+
+# Comando para ejecutar el servidor en R
+CMD ["Rscript", "app.R"]

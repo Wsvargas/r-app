@@ -1,14 +1,17 @@
 # app.R
-library(shiny)
+library(httpuv)
 
-# Definir la interfaz de usuario
-ui <- fluidPage(
-  titlePanel("R Shiny App"),
-  h1("Hello from R with Shiny!")
-)
+# Define la función para manejar las solicitudes HTTP
+handler <- function(req) {
+  list(
+    status = 200,
+    headers = list('Content-Type' = 'text/html'),
+    body = "<h1>Hello from R HTTP Server! <p> developer name: Willian Vargas</h1>"
+  )
+}
 
-# Definir el servidor de la aplicación
-server <- function(input, output) {}
+# Inicia el servidor en el puerto 8787
+server <- startServer("0.0.0.0", 8787, list(call = handler))
 
-# Crear la aplicación Shiny
-shinyApp(ui = ui, server = server)
+# Mantén el servidor en funcionamiento
+server$wait()
