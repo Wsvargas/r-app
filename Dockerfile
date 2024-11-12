@@ -7,7 +7,7 @@ WORKDIR /app
 # Copiamos el código fuente dentro del contenedor
 COPY . .
 
-# Descargamos las dependencias (en caso de que las haya)
+# Descargamos las dependencias
 RUN go mod tidy
 
 # Exponemos el puerto
