@@ -5,7 +5,7 @@ FROM rocker/r-ver:latest
 WORKDIR /app
 
 # Instala las dependencias necesarias
-RUN R -e "install.packages('httpuv')"
+RUN R -e "install.packages('plumber')"
 
 # Copia el archivo de la aplicación R
 COPY app.R /app/
