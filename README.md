@@ -1,4 +1,5 @@
 # R Docker App 📊🚀
+# deploy in railway: r-app-production.up.railway.app
 
 **R Docker App** is a simple R application that prints **"Hello from R!"** to the console. This project is containerized with Docker, making it easy to deploy and run across different environments. 🌍
 

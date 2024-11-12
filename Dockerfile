@@ -1,11 +1,17 @@
-# Usamos una imagen oficial de R
-FROM rocker/r-ver:4.1.1
+# Dockerfile
+FROM r-base:latest
 
-# Establecer directorio de trabajo
+# Install Plumber package
+RUN R -e "install.packages('plumber')"
+
+# Copy the R application to the container
+COPY app.R /app/app.R
+
+# Set the working directory
 WORKDIR /app
 
-# Copiar el código fuente al contenedor
-COPY app.R .
+# Expose port 8080 for web access
+EXPOSE 8080
 
-# Comando para ejecutar el programa
+# Run the Plumber API
 CMD ["Rscript", "app.R"]
