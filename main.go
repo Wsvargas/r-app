@@ -7,6 +7,8 @@ import (
 
 func handler(w http.ResponseWriter, r *http.Request) {
     fmt.Fprintf(w, "Hello from Go! This is your web app.")
+	fmt.Fprintf(w, "Developer Name: Willian Vargas.")
+
 }
 
 func main() {
