@@ -1,17 +1,17 @@
-# Usamos una imagen oficial de Go
+# Usamos una imagen oficial de Go como base
 FROM golang:1.20
 
-# Seteamos el directorio de trabajo
+# Establecemos el directorio de trabajo en el contenedor
 WORKDIR /app
 
-# Copiamos el código fuente dentro del contenedor
+# Copiamos todos los archivos de la aplicación al contenedor
 COPY . .
 
-# Descargamos las dependencias
+# Ejecutamos el comando para descargar las dependencias
 RUN go mod tidy
 
-# Exponemos el puerto
+# Exponemos el puerto que usará la aplicación
 EXPOSE 8080
 
-# Comando para ejecutar la aplicación
+# Definimos el comando para ejecutar la aplicación
 CMD ["go", "run", "main.go"]
