@@ -1,11 +1,17 @@
-FROM rocker/r-ver:latest
+# Usamos una imagen oficial de Go
+FROM golang:1.20
 
+# Seteamos el directorio de trabajo
 WORKDIR /app
 
-RUN R -e "install.packages('plumber')"
+# Copiamos el código fuente dentro del contenedor
+COPY . .
 
-COPY app.R /app/
+# Descargamos las dependencias (en caso de que las haya)
+RUN go mod tidy
 
-EXPOSE 8787
+# Exponemos el puerto
+EXPOSE 8080
 
-CMD ["Rscript", "app.R"]
+# Comando para ejecutar la aplicación
+CMD ["go", "run", "main.go"]
