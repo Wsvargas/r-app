@@ -1,17 +1,17 @@
 # Dockerfile
 FROM r-base:latest
 
-# Install Plumber package
+# Instala el paquete Plumber
 RUN R -e "install.packages('plumber')"
 
-# Copy the R application to the container
+# Copia el archivo app.R al contenedor
 COPY app.R /app/app.R
 
-# Set the working directory
+# Define el directorio de trabajo
 WORKDIR /app
 
-# Expose port 8080 for web access
+# Exponer el puerto 8080 para el acceso web
 EXPOSE 8080
 
-# Run the Plumber API
+# Ejecuta la aplicación R
 CMD ["Rscript", "app.R"]
