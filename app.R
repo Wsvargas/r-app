@@ -1,7 +1,6 @@
 # app.R
 library(plumber)
 
-# Define la función para manejar las solicitudes HTTP
 # Esta ruta devolverá un mensaje en HTML
 #* @get /hello
 function() {
